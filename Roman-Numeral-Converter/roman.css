@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Playwrite+IT+Moderna:wght@100..400&display=swap');
+
+
+body {
+    background: #1a2639;
+    font-family: "Josefin Sans", serif;
+}
+
+header h1 {
+    font-family: "Playwrite IT Moderna", serif;
+    text-align: center;
+    font-size: 2.8rem;
+    color: #ffffff;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 60vh;
+    align-items: center;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    padding: 35px;
+    border: 2px solid #d9dad7;
+    background: #3e4a61;
+    width: 30%;
+}
+
+label {
+    color: #ffffff;
+    font-size: 2rem;
+    text-align: center;
+}
+
+input {
+    padding: 15px;
+    background-color: #1a2639;
+    margin: 12px 0px 0px 0px;
+}
+
+input:focus {
+    color: #ffffff;
+}
+
+button {
+    padding: 10px;
+    background-color: #c24d2c;
+    border: none;
+    color: #ffffff;
+    font-size: 1.3rem;
+    cursor: pointer;
+    margin: 12px 0px 0px 0px;
+}
+
+.result-container {
+    display: none;
+    margin: 20px 0px 0px 0px;
+    border: 2px solid #b95e45;
+    background-color: #ff8361;
+    width: 35%;
+}
+
+.result-container p {
+    text-align: center;
+    color: #ffffff;
+    font-size: 1.2rem;
+    padding: 15px;
+}

@@ -71,7 +71,18 @@ body {
 
 .add-to-cart-btn {
     margin: 30px auto 10px;
+    color: var(--dark-grey);
+    background-color: var(--gold);
+    background-image: linear-gradient(var(--golden-yellow), var(--orange));
+    border-color: var(--gold);
+    border-width: 3px;
+    cursor: pointer;
 }
+
+.add-to-cart-btn:hover {
+    background-image: linear-gradient(var(--yellow), var(--dark-orange));
+}
+
 
 #cart-container {
     display: none;

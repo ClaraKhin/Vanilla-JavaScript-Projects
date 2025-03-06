@@ -17,16 +17,13 @@ let round = 1;
 let rolls = 0;
 
 const rollDice = () => {
-  diceValuesArr = [];
-
-  for (let i = 0; i < 5; i++) {
-    const randomDice = Math.floor(Math.random() * 6) + 1;
-    diceValuesArr.push(randomDice);
-  }
-
-  listOfAllDice.forEach((dice, index) => {
-    dice.textContent = diceValuesArr[index];
-  });
+  diceValuesArr = Array.from(
+    { length: 5 },
+    () => Math.floor(Math.random() * 6) + 1
+  );
+  listOfAllDice.forEach(
+    (dice, index) => (dice.textContent = diceValuesArr[index])
+  );
 };
 
 const updateStats = () => {
@@ -43,61 +40,47 @@ const updateRadioOption = (index, score) => {
 const updateScore = (selectedValue, achieved) => {
   score += parseInt(selectedValue);
   totalScoreElement.textContent = score;
-
   scoreHistory.innerHTML += `<li>${achieved} : ${selectedValue}</li>`;
 };
 
 const getHighestDuplicates = (arr) => {
-  const counts = {};
+  const counts = arr.reduce((acc, num) => {
+    acc[num] = (acc[num] || 0) + 1;
+    return acc;
+  }, {});
+  const highestCount = Math.max(...Object.values(counts));
 
-  for (const num of arr) {
-    if (counts[num]) {
-      counts[num]++;
-    } else {
-      counts[num] = 1;
-    }
-  }
-
-  let highestCount = 0;
-
-  for (const num of arr) {
-    const count = counts[num];
-    if (count >= 3 && count > highestCount) {
-      highestCount = count;
-    }
-    if (count >= 4 && count > highestCount) {
-      highestCount = count;
-    }
-  }
-
-  const sumOfAllDice = arr.reduce((a, b) => a + b, 0);
-
-  if (highestCount >= 4) {
-    updateRadioOption(1, sumOfAllDice);
-  }
-
-  if (highestCount >= 3) {
-    updateRadioOption(0, sumOfAllDice);
-  }
-
-  updateRadioOption(5, 0);
+  if (highestCount >= 4)
+    updateRadioOption(
+      1,
+      arr.reduce((a, b) => a + b, 0)
+    );
+  if (highestCount >= 3)
+    updateRadioOption(
+      0,
+      arr.reduce((a, b) => a + b, 0)
+    );
 };
 
 const detectFullHouse = (arr) => {
-  const counts = {};
-
-  for (const num of arr) {
-    counts[num] = counts[num] ? counts[num] + 1 : 1;
-  }
-
-  const hasThreeOfAKind = Object.values(counts).includes(3);
-  const hasPair = Object.values(counts).includes(2);
-
-  if (hasThreeOfAKind && hasPair) {
+  const counts = arr.reduce((acc, num) => {
+    acc[num] = (acc[num] || 0) + 1;
+    return acc;
+  }, {});
+  if (Object.values(counts).includes(3) && Object.values(counts).includes(2))
     updateRadioOption(2, 25);
-  }
+};
 
-  updateRadioOption(5, 0);
+const checkForStraights = (arr) => {
+  const sortedNumbersArr = arr.sort((a, b) => a - b);
+  const uniqueNumbersArr = [...new Set(sortedNumbersArr)];
+  const uniqueNumbersStr = uniqueNumbersArr.join("");
+  const smallStraights = ["1234", "2345", "3456"];
+  const largeStraights = ["12345", "23456"];
+
+  if (smallStraights.some((straight) => uniqueNumbersStr.includes(straight)))
+    updateRadioOption(3, 30);
+  if (largeStraights.includes(uniqueNumbersStr)) updateRadioOption(4, 40);
 };
 
 const resetRadioOptions = () => {
@@ -105,10 +88,7 @@ const resetRadioOptions = () => {
     input.disabled = true;
     input.checked = false;
   });
-
-  scoreSpans.forEach((span) => {
-    span.textContent = "";
-  });
+  scoreSpans.forEach((span) => (span.textContent = ""));
 };
 
 const resetGame = () => {
@@ -116,17 +96,11 @@ const resetGame = () => {
   score = 0;
   round = 1;
   rolls = 0;
-
-  listOfAllDice.forEach((dice, index) => {
-    dice.textContent = diceValuesArr[index];
-  });
-
+  listOfAllDice.forEach((dice) => (dice.textContent = 0));
   totalScoreElement.textContent = score;
   scoreHistory.innerHTML = "";
-
   rollsElement.textContent = rolls;
   roundElement.textContent = round;
-
   resetRadioOptions();
 };
 
@@ -140,39 +114,27 @@ rollDiceBtn.addEventListener("click", () => {
     updateStats();
     getHighestDuplicates(diceValuesArr);
     detectFullHouse(diceValuesArr);
+    checkForStraights(diceValuesArr);
+    updateRadioOption(5, 0); // Enable "None of the Above" option here
   }
 });
 
 rulesBtn.addEventListener("click", () => {
   isModalShowing = !isModalShowing;
-
-  if (isModalShowing) {
-    rulesBtn.textContent = "Hide rules";
-    rulesContainer.style.display = "block";
-  } else {
-    rulesBtn.textContent = "Show rules";
-    rulesContainer.style.display = "none";
-  }
+  rulesBtn.textContent = isModalShowing ? "Hide rules" : "Show rules";
+  rulesContainer.style.display = isModalShowing ? "block" : "none";
 });
 
 keepScoreBtn.addEventListener("click", () => {
-  let selectedValue;
-  let achieved;
-
-  for (const radioButton of scoreInputs) {
-    if (radioButton.checked) {
-      selectedValue = radioButton.value;
-      achieved = radioButton.id;
-      break;
-    }
-  }
-
+  const selectedValue = Array.from(scoreInputs).find(
+    (input) => input.checked
+  )?.value;
   if (selectedValue) {
     rolls = 0;
     round++;
     updateStats();
     resetRadioOptions();
-    updateScore(selectedValue, achieved);
+    updateScore(selectedValue, selectedValue);
     if (round > 6) {
       setTimeout(() => {
         alert(`Game Over! Your total score is ${score}`);

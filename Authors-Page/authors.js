@@ -2,7 +2,7 @@ const authorContainer = document.getElementById("author-container");
 const loadMoreBtn = document.getElementById("load-more-btn");
 
 let startingIndex = 1;
-let endingIndex = 9;
+let endingIndex = 10;
 let authorDataArr = [];
 
 fetch("https://gutendex.com/books/")
@@ -16,6 +16,12 @@ fetch("https://gutendex.com/books/")
     console.error(`There was an error: ${err}`);
   });
 
+const fetchMoreAuthors = () => {
+  startingIndex += 10;
+  endingIndex += 10;
+  displayAuthors(authorDataArr.slice(startingIndex, endingIndex));
+};
+
 const displayAuthors = (books) => {
   books.forEach(({ authors, formats, summaries, title }, index) => {
     authorContainer.innerHTML += `
@@ -28,3 +34,5 @@ const displayAuthors = (books) => {
   `;
   });
 };
+
+loadMoreBtn.addEventListener("click", fetchMoreAuthors);

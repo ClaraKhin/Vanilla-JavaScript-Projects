@@ -29,8 +29,8 @@ body {
 
 .user-card {
     border-radius: 15px;
-    width: 430px;
-    height: 560px;
+    width: 350px;
+    height: 350px;
     background-color: var(--light-grey);
     margin: 20px;
 }
@@ -60,10 +60,15 @@ body {
 }
 
 .summaries {
-    font-size: .8em;
+
     text-align: left;
     width: 88%;
     margin: 0 auto;
+    text-overflow: ellipsis;
+    max-height: 100px;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-bottom: 10px;
 }
 
 .btn {

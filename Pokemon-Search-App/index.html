@@ -9,6 +9,37 @@
 </head>
 
 <body>
+    <h1>Pokémon Search App</h1>
+
+    <div class="container">
+        <h4>Search for Pokémon Name or ID:</h4>
+        <div class="input-container">
+            <input type="text" id="search-input" required>
+            <button type="button" id="search-button">Search</button>
+        </div>
+
+        <div class="pokemon-details">
+            <h2 id="pokemon-name"></h2>
+            <p id="pokemon-id"></p>
+            <img id="sprite" hidden>
+
+            <div class="info">
+                <p>Weight: <span id="weight"></span></p>
+                <p>Height: <span id="height"></span></p>
+                <p>Type(s): <span id="types"></span></p>
+            </div>
+
+            <div class="stats">
+                <h3>Base Stats</h3>
+                <p>HP: <span id="hp"></span></p>
+                <p>Attack: <span id="attack"></span></p>
+                <p>Defense: <span id="defense"></span></p>
+                <p>Special Attack: <span id="special-attack"></span></p>
+                <p>Special Defense: <span id="special-defense"></span></p>
+                <p>Speed: <span id="speed"></span></p>
+            </div>
+        </div>
+    </div>
 
     <script src="pokemon.js"></script>
 </body>

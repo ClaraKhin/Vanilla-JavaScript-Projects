@@ -1,6 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: hsl(202, 86%, 94%);
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.calculation-container {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70%;
+    width: 60%;
+}
+
+.calculator {
+    width: 50%;
+    margin: 0 2.5rem;
+}
+
+h2 {
+    color: hsl(202, 55%, 16%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+label {
+    font-size: .6em;
+    color: hsl(200, 24%, 40%);
+}
+
+.clear {
+    font-weight: lighter;
+    font-size: .5em;
+    text-decoration: underline;
+    color: hsl(200, 24%, 40%);
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    border: 2px solid hsl(200, 24%, 40%);
+    border-radius: 5px;
+    margin: .4rem 0 .4rem 0;
+}
+
+#amount,
+#term,
+#interest {
+    border: none;
+    margin: .5em;
+    width: 100%;
+}
+
+.amount,
+.term,
+.interest {
+    
+    background-color: hsl(202, 86%, 94%);
+}
+
+#amount,
+#term,
+#interest:focus {
+    outline: none;
+}
+
+
+
+
+.results {
+    width: 50%;
+    margin: 0 2.5rem;
+}
+
 .attribution {
     font-size: 11px;
     text-align: center;
+    margin-top: 1.5rem;
 }
 
 .attribution a {

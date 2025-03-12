@@ -20,6 +20,7 @@ const numPayments = years * 12;
 const amountErr = document.getElementById("amount-error");
 const termErr = document.getElementById("term-error");
 const interestErr = document.getElementById("interest-error");
+const optionErrDisplay = document.getElementById("option-error");
 const amountErrDisplay = document.getElementById("amounts");
 const termErrDisplay = document.getElementById("terms");
 const interestErrDisplay = document.getElementById("interests");
@@ -37,12 +38,13 @@ const calculate = () => {
   const monthlyRate = annualRate / 100 / 12;
   const numPayments = years * 12;
   const mortgageType = document.querySelector(
-    "input[name='mortgage-type']:checked"
+    "input[name='mortgage-type']"
   ).value;
-  if (isNaN(principal) || isNaN(years) || isNaN(annualRate)) {
+  if (isNaN(principal) || isNaN(years) || isNaN(annualRate) || !mortgageType) {
     amountErr.textContent = `This field is required`;
     termErr.textContent = `This field is required`;
     interestErr.textContent = `This field is required`;
+    optionErrDisplay.textContent = `This field is required`;
     amountErrDisplay.style.borderColor = "red";
     termErrDisplay.style.borderColor = "red";
     interestErrDisplay.style.borderColor = "red";
@@ -73,3 +75,14 @@ const calculate = () => {
 };
 
 calculateBtn.addEventListener("click", calculate);
+
+clearBtn.addEventListener("click", () => {
+  amountInput.value = "";
+  termInput.value = "";
+  interestInput.value = "";
+  resultMonthly.textContent = "£0.00";
+  resultTotal.textContent = "£0.00";
+  mortgageTypeInputs.forEach((input) => {
+    input.checked = false;
+  });
+});

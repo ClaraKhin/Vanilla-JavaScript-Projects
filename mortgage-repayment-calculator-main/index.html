@@ -49,13 +49,14 @@
       <h5>Mortgage Type</h5>
       <div class="radio-group">
         <div class="radio-option">
-          <input type="radio" name="mortgage-type" id="repayment" class="repayment" value="repayment" checked>
+          <input type="radio" name="mortgage-type" id="repayment" class="repayment" value="repayment">
           <label for="repayment" class="repayment-label">Repayment</label>
         </div>
         <div class="radio-option">
           <input type="radio" name="mortgage-type" id="interest-only" class="interest-only" value="interest-only">
           <label for="interest-only" class="interest-label">Interest Only</label>
         </div>
+        <span id="option-error"></span>
       </div>
 
       <button id="calculate">
@@ -68,12 +69,15 @@
       <p>Your results are shown below based on the information you provided. To adjust the results, edit the form and
         click
         “calculate repayments” again.</p>
+
       <div class="result-box">
         <p>Your monthly repayments</p>
         <h1 id="monthly-payment">£0.00</h1>
+        <hr>
+
+        <p>Total you'll repay over the term</p>
+        <h2 id="total-repayment">£0.00</h2>
       </div>
-      <p>Total you'll repay over the term</p>
-      <h2 id="total-repayment">£0.00</h2>
     </div>
   </div>
   <div class="attribution">

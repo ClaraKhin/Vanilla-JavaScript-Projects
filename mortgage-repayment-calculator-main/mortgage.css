@@ -18,15 +18,16 @@ body {
 .calculation-container {
     background-color: #ffffff;
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: 70%;
+    height: 80%;
     width: 60%;
 }
 
 .calculator {
+    padding: 2rem;
+
     width: 50%;
-    margin: 0 2.5rem;
+    height: 80%;
 }
 
 h2 {
@@ -48,6 +49,7 @@ label {
     font-size: .5em;
     text-decoration: underline;
     color: hsl(200, 24%, 40%);
+    cursor: pointer;
 }
 
 .input-group {
@@ -94,10 +96,13 @@ label {
 
 #amount-error,
 #term-error,
-#interest-error {
+#interest-error,
+#option-error {
     color: red;
     font-size: 11px;
 }
+
+
 
 h5 {
     margin-top: 1rem;
@@ -111,9 +116,10 @@ h5 {
     align-items: center;
     border: 1px solid hsl(200, 24%, 40%);
     padding: .6rem;
-    margin: .4rem 0 .4rem 0;
+    margin: .4rem 0 .1rem 0;
     border-radius: 5px;
 }
+
 
 
 .repayment,
@@ -122,21 +128,82 @@ h5 {
     margin-right: 1rem;
 }
 
+
 .repayment-label,
 .interest-label {
     font-size: .8em;
     font-weight: bold;
 }
 
+button {
+    padding: 10px;
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    background-color: hsl(61, 70%, 52%);
+    color: hsl(202, 55%, 16%);
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 1.5rem;
+}
 
+
+
+
+button .icon {
+    margin-right: 5px;
+}
 
 
 .results {
     width: 50%;
-    margin: 0 2.5rem;
+    background-color: hsl(202, 55%, 16%);
+    padding: 2rem;
+    width: 50%;
+    height: 87%;
+    border-bottom-left-radius: 50px;
 }
 
+h3 {
+    color: hsl(202, 86%, 94%);
 
+}
+
+.results p {
+    color: hsl(200, 24%, 40%);
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.results>p {
+    font-size: 1.1em;
+    margin-bottom: 2rem;
+}
+
+.results h1 {
+    color: hsl(61, 70%, 52%);
+}
+
+.results h2 {
+    color: hsl(202, 86%, 94%);
+}
+
+.result-box {
+    margin-bottom: 1rem;
+    display: block;
+    margin: 0 auto;
+    width: 90%;
+    background-color: hsl(200, 64%, 11%);
+    padding: .8rem;
+    border-radius: 10px;
+    border-top: 4px solid hsl(61, 70%, 52%);
+}
+
+.result-box hr {
+    margin: .5rem 0 .5rem 0;
+    border: 1px solid hsl(200, 24%, 40%);
+
+}
 
 .attribution {
     font-size: 11px;

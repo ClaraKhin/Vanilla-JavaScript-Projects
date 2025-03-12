@@ -20,6 +20,12 @@ const numPayments = years * 12;
 const amountErr = document.getElementById("amount-error");
 const termErr = document.getElementById("term-error");
 const interestErr = document.getElementById("interest-error");
+const amountErrDisplay = document.getElementById("amounts");
+const termErrDisplay = document.getElementById("terms");
+const interestErrDisplay = document.getElementById("interests");
+const amountSpan = document.querySelector(".amount");
+const yearSpan = document.querySelector(".term");
+const interestSpan = document.querySelector(".interest");
 
 const calculate = () => {
   let monthlyPayment = 0;
@@ -37,6 +43,16 @@ const calculate = () => {
     amountErr.textContent = `This field is required`;
     termErr.textContent = `This field is required`;
     interestErr.textContent = `This field is required`;
+    amountErrDisplay.style.borderColor = "red";
+    termErrDisplay.style.borderColor = "red";
+    interestErrDisplay.style.borderColor = "red";
+    amountSpan.style.backgroundColor = "red";
+    amountSpan.style.color = "white";
+    yearSpan.style.backgroundColor = "red";
+    yearSpan.style.color = "white";
+    interestSpan.style.backgroundColor = "red";
+    interestSpan.style.color = "white";
+
     return;
   } else if (mortgageType === "repayment") {
     monthlyPayment =

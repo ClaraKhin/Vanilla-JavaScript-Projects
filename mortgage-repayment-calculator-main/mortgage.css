@@ -34,11 +34,13 @@ h2 {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 1rem;
 }
 
 label {
     font-size: .6em;
     color: hsl(200, 24%, 40%);
+    margin: 0 .3rem 0 .3rem;
 }
 
 .clear {
@@ -51,9 +53,14 @@ label {
 .input-group {
     display: flex;
     align-items: center;
-    border: 2px solid hsl(200, 24%, 40%);
+    border: 1px solid hsl(200, 24%, 40%);
     border-radius: 5px;
-    margin: .4rem 0 .4rem 0;
+    margin: .2rem .2rem 0.2rem;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
 }
 
 #amount,
@@ -67,14 +74,25 @@ label {
 .amount,
 .term,
 .interest {
-    
+    padding: 8px;
     background-color: hsl(202, 86%, 94%);
+    color: hsl(200, 24%, 40%);
 }
 
 #amount,
 #term,
 #interest:focus {
     outline: none;
+    color: hsl(202, 55%, 16%);
+
+}
+
+#amount-error,
+#term-error,
+#interest-error {
+    color: red;
+    font-size: 11px;
+
 }
 
 
@@ -83,6 +101,12 @@ label {
 .results {
     width: 50%;
     margin: 0 2.5rem;
+}
+
+h5 {
+    margin-top: 1rem;
+    font-weight: lighter;
+    font-size: .6em;
 }
 
 .attribution {

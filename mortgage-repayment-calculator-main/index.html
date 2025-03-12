@@ -21,25 +21,25 @@
     <div class="calculator">
       <h2>Mortgage Calculator <span class="clear">Clear All</span></h2>
       <label for="amount">Mortgage Amount</label>
-      <div class="input-group">
+      <div class="input-group" id="amounts">
         <span class="amount">£</span>
-        <input type="number" id="amount" placeholder="300,000">
+        <input type="number" id="amount" placeholder="eg: 300,000">
       </div>
       <span id="amount-error"></span>
 
       <div class="flex">
         <div>
           <label for="term">Mortgage Term</label>
-          <div class="input-group">
-            <input type="number" id="term" placeholder="25">
+          <div class="input-group" id="terms">
+            <input type="number" id="term" placeholder="eg: 25">
             <span class="term">years</span>
           </div>
           <span id="term-error"></span>
         </div>
         <div>
           <label for="interest">Interest Rate</label>
-          <div class="input-group">
-            <input type="number" id="interest" placeholder="5.25">
+          <div class="input-group" id="interests">
+            <input type="number" id="interest" placeholder="eg: 5.25">
             <span class="interest">%</span>
           </div>
           <span id="interest-error"></span>

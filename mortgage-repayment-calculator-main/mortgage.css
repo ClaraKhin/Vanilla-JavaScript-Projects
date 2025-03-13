@@ -214,3 +214,63 @@ h3 {
 .attribution a {
     color: hsl(228, 45%, 44%);
 }
+
+/* Mobile version adjustments */
+@media screen and (max-width: 480px) {
+    body {
+        height: auto;
+        padding: 1rem;
+    }
+
+    .calculation-container {
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1rem;
+    }
+
+    .calculator,
+    .results {
+        width: 100%;
+        height: auto;
+        padding: 1rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+        justify-content: center;
+    }
+
+    .input-group {
+        flex-direction: column;
+        align-items: stretch;
+        margin-bottom: 1rem;
+    }
+
+    #amount,
+    #term,
+    #interest {
+        margin: 0.5rem 0;
+        width: 100%;
+    }
+
+    button {
+        margin-top: 1rem;
+        width: 100%;
+    }
+
+    .result-box {
+        width: calc(100% - 2rem);
+        /* Adjust width to account for padding */
+        margin: 0 auto;
+        border-radius: 0;
+    }
+
+    .results {
+        margin-top: 1rem;
+        padding: 1rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
